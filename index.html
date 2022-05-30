@@ -7,14 +7,14 @@
     <script src="cookieAccept.min.js"></script>
     <script>
       const cookieConsent = new CookieAccept({
-        domain: "localhost",
+        domain: "https://yourdomain.com",
         dayExpire: 60,
         text: {
-          header: "เว็บไซต์นี้ใช้คุกกี้",
-          body: "เราใช้คุกกี้เพื่อวิเคราะห์การเข้าใช้งาน และทำความเข้าใจว่าผู้ใช้งานมาจากที่ใด สามารถเลือกตั้งค่าความยินยอมการใช้คุกกี้ได้ โดย “ตั้งค่าคุกกี้ใน Browser ของคุณ”",
-          privacyPolicy: "นโยบายความเป็นส่วนตัว",
-          learnMore: "เรียนรู้เพิ่มเติม",
-          accept: "ยอมรับ",
+          header: "This website uses cookies",
+          body: "We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you’ve provided to them or that they’ve collected from your use of their services.",
+          privacyPolicy: "PrivacyPolicy",
+          learnMore: "Learn More",
+          accept: "Got it!",
         },
         bgColor: "#F3F4F6",
         textColor: "#1F2937",
@@ -23,11 +23,11 @@
         buttonBorderColor: "#FFFFFF",
         linkColor: "#2563EB",
         url: {
-          privacyPolicy: "https://video.dmc.tv/privacy",
-          cookiePolicy: "https://video.dmc.tv/cookie",
+          privacyPolicy: "https://yourdomain.com/privacy",
+          cookiePolicy: "https://yourdomain.comv/cookie",
           target: "_blank",
         },
-        align: "right",
+        align: "right", // left center right
       });
       cookieConsent.init();
     </script>

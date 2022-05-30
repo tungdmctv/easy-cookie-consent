@@ -1,12 +1,8 @@
 {
   "name": "easycookieconsent",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Easy Cookie Consent Popup",
   "main": "cookieAccept.min.js",
-  "dependencies": {
-    "live-server": "^1.2.2"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
