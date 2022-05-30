@@ -4,6 +4,10 @@ This is an easy Javascript for cookie acceptance popup on your website. You can 
 
 ![Screen Shot 2565-05-31 at 00.13.58](https://s2.loli.net/2022/05/31/ZSdLq8lQz2mbKi5.png)
 
+### Example
+
+https://tungdmctv.github.io/easy-cookie-consent/
+
 ### Setup
 
 ```js
