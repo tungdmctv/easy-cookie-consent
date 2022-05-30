@@ -55,7 +55,7 @@ class CookieAccept {
 
     const body = document.getElementsByTagName("body")[0];
     const div = document.createElement("div");
-    div.innerHTML = `<div style="padding: 1rem; padding-top: 0.25rem; color: ${this.textColor};
+    div.innerHTML = `<div id="ModalAcceptCookie" style="padding: 1rem; padding-top: 0.25rem; color: ${this.textColor};
     border-radius: 0.75rem;width: 33.333333%; background-color: ${this.bgColor};  position: fixed; 
     ${align}
     bottom: 0; 
@@ -95,13 +95,19 @@ class CookieAccept {
     let button = document.getElementById("acceptCookieButton");
     button.addEventListener("click", () => {
       this.acceptCookie();
+      this.hideModal();
     });
   }
 
   acceptCookie() {
-    console.log("ACCEPT COOKIE");
+    console.log("COOKIE ACCEPTED");
     const data = { acceptCookie: true };
     this.setCookie(JSON.stringify(data));
+  }
+
+  hideModal() {
+    const modal = document.getElementById("ModalAcceptCookie");
+    modal.remove();
   }
 
   getCookie() {

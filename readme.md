@@ -7,7 +7,7 @@ This is an easy Javascript for cookie acceptance popup on your website. You can 
 ### Setup
 
 ```js
-<script src="https://unpkg.com/easycookieconsent@1.0.3/cookieAccept.min.js"> </script>
+<script src="https://unpkg.com/easycookieconsent@1.0.4/cookieAccept.min.js"> </script>
 
 <script>
    const cookieConsent = new CookieAccept({
