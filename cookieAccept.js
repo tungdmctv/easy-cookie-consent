@@ -1,0 +1,127 @@
+class CookieAccept {
+  constructor({
+    domain = ".google.com",
+    dayExpire = 60,
+    text = {
+      header: "เว็บไซต์นี้ใช้คุกกี้",
+      body: "เราใช้คุกกี้เพื่อวิเคราะห์การเข้าใช้งาน และทำความเข้าใจว่าผู้ใช้งานมาจากที่ใด สามารถเลือกตั้งค่าความยินยอมการใช้คุกกี้ได้ โดย “ตั้งค่าคุกกี้ใน Browser ของคุณ”",
+      privacyPolicy: "นโยบายความเป็นส่วนตัว",
+      learnMore: "เรียนรู้เพิ่มเติม",
+      accept: "ยอมรับ",
+    },
+    bgColor = "#F3F4F6",
+    textColor = "#1F2937",
+    buttonColor = "#6366F1",
+    buttonTextColor = "#FFFFFF",
+    buttonBorderColor = "#FFFFFF",
+    linkColor = "#2563EB",
+    url = {
+      privacyPolicy: "https://video.dmc.tv/privacy",
+      cookiePolicy: "https://video.dmc.tv/cookie",
+      target: "_blank",
+    },
+    align = "center",
+  }) {
+    this.domain = domain.replace(/^https?:\/\//, "");
+    this.dayExpire = dayExpire;
+    this.text = text;
+    this.align = align;
+    this.bgColor = bgColor;
+    this.textColor = textColor;
+    this.buttonColor = buttonColor;
+    this.buttonTextColor = buttonTextColor;
+    this.buttonBorderColor = buttonBorderColor;
+    this.linkColor = linkColor;
+    this.cookiePolicy = url.cookiePolicy;
+    this.privacyPolicy = url.privacyPolicy;
+    this.target = url.target;
+    this.cookieName = domain.replaceAll(".", "_") + "_CookieAccept";
+  }
+
+  init() {
+    const cookie = JSON.parse(this.getCookie()) || {};
+    if (!cookie.acceptCookie) {
+      setTimeout(() => {
+        this.displayModal();
+      }, 100);
+    }
+  }
+
+  displayModal() {
+    let align = "";
+    if (this.align == "center") align = "left: 33.3333%;";
+    if (this.align == "left") align = "left: 0;";
+    if (this.align == "right") align = "right: 0;";
+
+    const body = document.getElementsByTagName("body")[0];
+    const div = document.createElement("div");
+    div.innerHTML = `<div style="padding: 1rem; padding-top: 0.25rem; color: ${this.textColor};
+    border-radius: 0.75rem;width: 33.333333%; background-color: ${this.bgColor};  position: fixed; 
+    ${align}
+    bottom: 0; 
+    ">
+    <div id="header"  style="text-align: center; font-weight: 700;padding:0.25rem;     ">
+    ${this.text.header}
+    </div>
+    <div id="body" style="">
+    ${this.text.body}
+    <a href="${this.privacyPolicy}" target="${this.target}" style="color: ${this.linkColor};">${this.text.privacyPolicy}</a>
+    </div>
+    <div  style="text-align: center; ">
+    <a href="${this.cookiePolicy}" target="${this.target}" style="color: ${this.linkColor};" >${this.text.learnMore}</a>
+    <button
+    id="acceptCookieButton"
+    type="button"
+    style="padding-top: 0.5rem;cursor: pointer; 
+    padding-bottom: 0.5rem; 
+    padding-left: 1rem;
+    padding-right: 1rem; 
+    margin: 0.5rem; 
+    background-color:  ${this.buttonColor}; 
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform; 
+    transition-duration: 500ms; 
+    color:  ${this.buttonTextColor}; 
+    border-radius: 0.375rem; 
+    border-width: 1px; 
+    border-color:  ${this.buttonBorderColor}; 
+    user-select: none; 
+   ">
+   ${this.text.accept}
+     </button>
+    </div>
+    </div>`;
+    body.append(div);
+    const data = { acceptCookie: true };
+    let button = document.getElementById("acceptCookieButton");
+    button.addEventListener("click", () => {
+      this.acceptCookie();
+    });
+  }
+
+  acceptCookie() {
+    console.log("ACCEPT COOKIE");
+    const data = { acceptCookie: true };
+    this.setCookie(JSON.stringify(data));
+  }
+
+  getCookie() {
+    var nameEQ = this.cookieName + "=";
+    var ca = document.cookie.split(";");
+    for (var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == " ") c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  }
+
+  setCookie(value) {
+    let name = this.cookieName;
+    var expires = "";
+    var date = new Date();
+    date.setTime(date.getTime() + this.dayExpire * 24 * 60 * 60 * 1000);
+    expires = "; expires=" + date.toUTCString();
+    document.cookie =
+      name + "=" + (value || "") + expires + `; path=/;domain=${this.domain};`;
+  }
+}

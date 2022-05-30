@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="cookieAccept.min.js"></script>
+    <script>
+      const cookieConsent = new CookieAccept({
+        domain: "localhost",
+        dayExpire: 60,
+        text: {
+          header: "เว็บไซต์นี้ใช้คุกกี้",
+          body: "เราใช้คุกกี้เพื่อวิเคราะห์การเข้าใช้งาน และทำความเข้าใจว่าผู้ใช้งานมาจากที่ใด สามารถเลือกตั้งค่าความยินยอมการใช้คุกกี้ได้ โดย “ตั้งค่าคุกกี้ใน Browser ของคุณ”",
+          privacyPolicy: "นโยบายความเป็นส่วนตัว",
+          learnMore: "เรียนรู้เพิ่มเติม",
+          accept: "ยอมรับ",
+        },
+        bgColor: "#F3F4F6",
+        textColor: "#1F2937",
+        buttonColor: "#6366F1",
+        buttonTextColor: "#FFFFFF",
+        buttonBorderColor: "#FFFFFF",
+        linkColor: "#2563EB",
+        url: {
+          privacyPolicy: "https://video.dmc.tv/privacy",
+          cookiePolicy: "https://video.dmc.tv/cookie",
+          target: "_blank",
+        },
+        align: "right",
+      });
+      cookieConsent.init();
+    </script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div style="text-align: center; width: 100%">TEST TEST<br /></div>
+  </body>
+</html>
