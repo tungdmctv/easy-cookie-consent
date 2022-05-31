@@ -1,6 +1,6 @@
 {
   "name": "easycookieconsent",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Easy Cookie Consent Popup",
   "main": "cookieAccept.min.js",
   "scripts": {
