@@ -11,7 +11,7 @@ https://tungdmctv.github.io/easy-cookie-consent/
 ### Setup
 
 ```js
-<script src="https://unpkg.com/easycookieconsent@1.0.5/cookieAccept.min.js"> </script>
+<script src="https://unpkg.com/easycookieconsent@1.0.6/cookieAccept.min.js"> </script>
 
 <script>
    const cookieConsent = new CookieAccept({
