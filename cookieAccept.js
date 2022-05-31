@@ -41,29 +41,77 @@ class CookieAccept {
   init() {
     const cookie = JSON.parse(this.getCookie()) || {};
     if (!cookie.acceptCookie) {
+      this.addCSS();
       setTimeout(() => {
         this.displayModal();
       }, 100);
     }
   }
 
-  displayModal() {
-    let align = "";
-    if (this.align == "center") align = "left: 33.3333%;";
-    if (this.align == "left") align = "left: 0;";
-    if (this.align == "right") align = "right: 0;";
+  addCSS() {
+    let css = `#ModalAcceptCookie{
+            width: 33.333333%;
+        }
+        @media (max-width: 800px) {
+          #ModalAcceptCookie {
+            width: 100%;
+          }
+        }`,
+      head = document.head || document.getElementsByTagName("head")[0],
+      style = document.getElementsByTagName("style");
 
+    if (this.align == "left") {
+      css += `#ModalAcceptCookie{
+              left: 0;
+          }`;
+    }
+    if (this.align == "right") {
+      css += `#ModalAcceptCookie{
+              right: 0;
+          }`;
+    }
+    if (this.align == "center") {
+      css += `#ModalAcceptCookie{
+        left: 33.33333%;
+      }
+      @media (max-width: 800px) {
+        #ModalAcceptCookie {
+          left: 0;
+        }
+      }
+      
+      `;
+    }
+
+    if (!style) {
+      style = document.createElement("style");
+    }
+    setTimeout(() => {
+      if (style.styleSheet) {
+        style[0].styleSheet.cssText = css;
+      } else {
+        style[0].append(document.createTextNode(css));
+        console.log("C", css);
+      }
+      head.appendChild(style);
+    }, 100);
+  }
+
+  displayModal() {
     const body = document.getElementsByTagName("body")[0];
     const div = document.createElement("div");
-    div.innerHTML = `<div id="ModalAcceptCookie" style="padding: 1rem; padding-top: 0.25rem; color: ${this.textColor};
-    border-radius: 0.75rem;width: 33.333333%; background-color: ${this.bgColor};  position: fixed; 
-    ${align}
-    bottom: 0; 
+
+    div.innerHTML = `<div id="ModalAcceptCookie" class="ModalAcceptCookie" 
+    style="margin: 0;
+    padding:0rem; padding-top: 0.25rem; 
+    color: ${this.textColor};
+    border-radius: 0.75rem; background-color: ${this.bgColor};  position: fixed; 
+    bottom: 0;
     ">
     <div id="header"  style="text-align: center; font-weight: 700;padding:0.25rem;     ">
     ${this.text.header}
     </div>
-    <div id="body" style="">
+    <div id="body" style="margin: 0; padding: 0.75rem; text-align: justify;">
     ${this.text.body}
     <a href="${this.privacyPolicy}" target="${this.target}" style="color: ${this.linkColor};">${this.text.privacyPolicy}</a>
     </div>

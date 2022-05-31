@@ -1,0 +1,9 @@
+#ModalAcceptCookie {
+  width: 33.333333%;
+}
+
+@media (max-width: 600px) {
+  #ModalAcceptCookie {
+    width: 100%;
+  }
+}

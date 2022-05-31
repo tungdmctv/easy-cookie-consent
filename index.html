@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://unpkg.com/easycookieconsent@1.0.4/cookieAccept.js"></script>
+    <script src="cookieAccept.js"></script>
     <script>
       const cookieConsent = new CookieAccept({
         domain: "http://localhost",
@@ -27,13 +27,13 @@
           cookiePolicy: "https://yourdomain.comv/cookie",
           target: "_blank",
         },
-        align: "right", // left center right
+        align: "center", // left center right
       });
       cookieConsent.init();
     </script>
     <title>Document</title>
   </head>
-  <body>
+  <body style="background-color: black;">
     <div style="text-align: center; width: 100%">TEST TEST<br /></div>
   </body>
 </html>
