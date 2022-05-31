@@ -51,15 +51,15 @@ class CookieAccept {
   addCSS() {
     let css = `#ModalAcceptCookie{
             width: 33.333333%;
+            z-index:auto;
         }
         @media (max-width: 800px) {
           #ModalAcceptCookie {
             width: 100%;
           }
         }`,
-      head = document.head || document.getElementsByTagName("head")[0],
-      style = document.getElementsByTagName("style");
-
+      head = document.getElementsByTagName("head")[0],
+      style = document.getElementsByTagName("style")[0];
     if (this.align == "left") {
       css += `#ModalAcceptCookie{
               left: 0;
@@ -82,19 +82,18 @@ class CookieAccept {
       
       `;
     }
-
     if (!style) {
       style = document.createElement("style");
     }
     setTimeout(() => {
+      //style = document.createElement("style");
       if (style.styleSheet) {
-        style[0].styleSheet.cssText = css;
+        style.styleSheet.cssText = css;
       } else {
-        style[0].append(document.createTextNode(css));
-        console.log("C", css);
+        style.append(document.createTextNode(css));
       }
-      head.appendChild(style);
-    }, 100);
+      head.append(style);
+    }, 50);
   }
 
   displayModal() {
