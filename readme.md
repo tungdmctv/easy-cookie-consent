@@ -92,3 +92,22 @@ cookieConsent.init();
 ```
 
 ![Screen Shot 2565-05-31 at 00.04.27](https://s2.loli.net/2022/05/31/awuAoeG3iPI1XYK.png)
+
+
+## VUE JS - Nuxt JS
+
+in VUE JS you can use vue head script https://www.npmjs.com/package/vue-head 
+
+```sh
+npm i vue-head
+```
+
+```js
+export default { 
+  head: {
+      script: [
+        { type: 'text/javascript', src: 'https://unpkg.com/easycookieconsent/cookieAccept.min.js',}, 
+      ],
+    }
+}  
+```
